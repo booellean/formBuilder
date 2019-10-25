@@ -58,6 +58,7 @@ jQuery(function($) {
     },
   ]
 
+  // to activate, uncomment the replaceFields property in onClear function
   const replaceFields = [
     {
       type: 'textarea',
@@ -219,7 +220,7 @@ jQuery(function($) {
     disableInjectedStyle: false,
     actionButtons: actionButtons,
     disableFields: ['autocomplete', 'custom-tinymce'],
-    replaceFields: replaceFields,
+    // replaceFields: replaceFields,
     disabledFieldButtons: {
       text: ['copy'],
     },

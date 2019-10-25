@@ -7,6 +7,7 @@ import controlSelect from './select';
 import controlText from './text';
 import controlFineUploader from './file.fineuploader';
 import controlTextarea from './textarea';
+import controlFroala from './textarea.froala';
 import controlTinymce from './textarea.tinymce';
 import controlQuill from './textarea.quill';
 
@@ -20,6 +21,7 @@ export default {
   controlText,
   controlFineUploader,
   controlTextarea,
+  controlFroala,
   controlTinymce,
   controlQuill
 };

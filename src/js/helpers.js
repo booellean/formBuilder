@@ -205,12 +205,21 @@ export default class Helpers {
                 const instance = window.fbEditors.quill[id].instance
                 const data = instance.getContents()
                 fieldData.value = window.JSON.stringify(data.ops)
+                console.log(fieldData.value)
               }
             } else if (fieldData.subtype === 'tinymce' && window.tinymce) {
               const id = `${fieldData.name}-preview`
               if (window.tinymce.editors[id]) {
                 const editor = window.tinymce.editors[id]
                 fieldData.value = editor.getContent()
+                console.log(fieldData.value)
+              }
+            } else if (fieldData.subtype === 'froala') {
+              const id = `${fieldData.name}-preview`
+              if (window.fbEditors.froala[id]) {
+                // TODO: Not sure if there's a better way to do this. Froala's instances are pretty messed up
+                const instance = document.getElementById(id)
+                fieldData.value = instance.innerHTML;
               }
             }
           }
