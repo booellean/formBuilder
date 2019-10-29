@@ -21,37 +21,13 @@
     <div class="build-wrap"></div>
     <form class="render-wrap"></form>
     <div class="action-buttons formbuilder-actions">
-      <h2>Actions</h2>
-      <button id="getFieldTypes" type="button">Get Field Types</button>
-      <button id="showData" type="button">Show Data</button>
-      <button id="clearFields" type="button">Clear All Fields</button>
-      <button id="getData" type="button">Get Data</button>
-      <button id="getXML" type="button">Get XML Data</button>
-      <button id="getJSON" type="button">Get JSON Data</button>
-      <button id="getJS" type="button">Get JS Data</button>
-      <button id="setData" type="button">Set Data</button>
-      <button id="toggleAllEdit" type="button">Toggle All Field Edit</button>
-      <button id="toggleEdit" type="button">Toggle Field Edit</button>
-      <input type="text" placeholder="current field id" id="currentFieldId" />
-      <button id="addField" type="button">Add Field</button>
-      <button id="removeField" type="button">Remove Field</button>
-      <button id="resetDemo" type="button">Reset Demo</button>
-      <h2>i18n</h2>
+      <h2>Languages</h2>
+      <input type="hidden" placeholder="current field id" id="currentFieldId" />
       <select id="setLanguage">
         <% _.forEach(htmlWebpackPlugin.options.langFiles, function(langFile) { %>
         <option value="<%- langFile.locale %>"><%- langFile.nativeName %></option>
         <% }); %>
       </select>
-    </div>
-    <div class="action-buttons formrender-actions">
-      <h2>Actions</h2>
-      <button id="loadUserForm" type="button">Load User Form</button>
-      <button id="showUserData" type="button">Show User Data</button>
-      <button id="renderUserForm" type="button">Render User Form</button>
-      <button id="getHTML" type="button">Get HTML</button>
-      <button id="clearUserForm" type="button">Clear Form</button>
-      <button id="testSubmit" type="submit">Test Submit</button>
-    </div>
   </div>
   <div id="formbuilder-options"></div>
   <script src="assets/js/vendor.js"></script>

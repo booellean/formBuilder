@@ -1,7 +1,5 @@
 # `clear` action
 
-Clears all user data from the form, even tinyMCE.
-
 ## Usage
 <pre><code class="js">const formRenderOptions = {
   formData: '[{"type":"text","label":"Text Field","name":"text-1526099104236","subtype":"text"}]';

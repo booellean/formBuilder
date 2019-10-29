@@ -31,7 +31,7 @@ To register new subtypes, call the `register` method with 3 args:
   * `controlClass` - as above
   * `parentType` - the parent type that these are subtypes to.
 
-If your new class inherits from another child class, you should conform to the naming scheme <parentFile>.<thisClass>.js. E.g check out textarea.tinymce.js which extends the `controlTextarea` control class. In this situation, it is often easier to simply call the register method on the parent class - e.g. in this case `controlTextarea.register(subtypes, controlNewClass, 'textarea');` - however this makes no tangible difference aside from not having to import the `control` class.
+If your new class inherits from another child class, you should conform to the naming scheme <parentFile>.<thisClass>.js. E.g check out textarea.froala.js which extends the `controlTextarea` control class. In this situation, it is often easier to simply call the register method on the parent class - e.g. in this case `controlTextarea.register(subtypes, controlNewClass, 'textarea');` - however this makes no tangible difference aside from not having to import the `control` class.
 
 # Supporting user configuration of controls
 
@@ -39,29 +39,20 @@ For a lot of controls, it is entirely feasible that the user will want to custom
 
 This option expects an object with keys for the names of controls to specify an object of configuration for. This configuration is then exposed to the control in `this.classConfig`.
 
-Have a look at `src/js/control/textarea.tinymce.js` for an example of a control that supports configuring. Rich text editors regularly require this type of configuration - customising toolbars, adding in plugins etc.
+Have a look at `src/js/control/textarea.froala.js` for an example of a control that supports configuring. Rich text editors regularly require this type of configuration - customising toolbars, adding in plugins etc.
 
 ```javascript
-// inside the tinymce control class this is available as this.classConfig.paste_data_images
+// inside the froala control class this is available as this.classConfig.paste_data_images
+
+// TODO: create a real example
 
 var renderOpts = {
   controlConfig: {
-    'textarea.tinymce': {
+    'textarea.froala': {
       paste_data_images: false
     }
   }
 };
-
-// load a different version of Quill
-
-var renderOpts = {
-  controlConfig: {
-    'textarea.quill': {
-      js: '//cdn.quilljs.com/1.3.4/quill.js',
-      css: '//cdn.quilljs.com/1.3.4/quill.snow.css',
-    }
-  }
-}
 
 ```
 

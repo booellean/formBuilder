@@ -1,6 +1,5 @@
 import '../sass/demo.scss'
 import { insertStyle, removeStyle } from '../../js/utils'
-import { builderActions, renderActions, demoActions } from './actionButtons'
 
 const localeSessionKey = 'formBuilder-locale'
 const defaultLocale = 'en-US'
@@ -9,7 +8,6 @@ const dataTypes = document.querySelectorAll('.demo-dataType')
 const dataType = window.sessionStorage.getItem('dataType') || 'json'
 const changeDataType = ({ target }) => {
   window.sessionStorage.setItem('dataType', target.value)
-  demoActions.resetDemo()
 }
 for (let i = 0; i < dataTypes.length; i++) {
   if (dataType === dataTypes[i].value) {
@@ -34,38 +32,11 @@ document.getElementById('toggleBootstrap').addEventListener('click', toggleBootS
 jQuery(function($) {
   const fields = [
     {
-      type: 'autocomplete',
-      label: 'Custom Autocomplete',
-      required: true,
-      values: [
-        { label: 'SQL' },
-        { label: 'C#' },
-        { label: 'JavaScript' },
-        { label: 'Java' },
-        { label: 'Python' },
-        { label: 'C++' },
-        { label: 'PHP' },
-        { label: 'Swift' },
-        { label: 'Ruby' },
-      ],
-    },
-    {
       label: 'Star Rating',
       attrs: {
         type: 'starRating',
       },
-      icon: '🌟',
-    },
-  ]
-
-  // to activate, uncomment the replaceFields property in onClear function
-  const replaceFields = [
-    {
-      type: 'textarea',
-      subtype: 'tinymce',
-      datatype: 'custom-tinymce',
-      label: 'tinyMCE',
-      required: true,
+      icon: '&#9733;'
     },
   ]
 
@@ -99,7 +70,7 @@ jQuery(function($) {
   const inputSets = [
     {
       label: 'User Details',
-      icon: '👨',
+      icon: '<font face="Wingdings">$</font>',
       name: 'user-details', // optional
       showHeader: true, // optional
       fields: [
@@ -134,6 +105,7 @@ jQuery(function($) {
     },
     {
       label: 'User Agreement',
+      icon: '<font face="Wingdings">ü</font>',
       fields: [
         {
           type: 'header',
@@ -196,9 +168,7 @@ jQuery(function($) {
     disabledSubtypes: {
       text: ['password'],
     },
-    // disableHTMLLabels: true,
     disabledAttrs,
-    // allowStageSort: false,
     dataType,
     subtypes: {
       text: ['datetime-local'],
@@ -219,8 +189,10 @@ jQuery(function($) {
     typeUserAttrs: typeUserAttrs,
     disableInjectedStyle: false,
     actionButtons: actionButtons,
-    disableFields: ['autocomplete', 'custom-tinymce'],
-    // replaceFields: replaceFields,
+    disableFields: [
+      'file',
+      'hidden'
+    ],
     disabledFieldButtons: {
       text: ['copy'],
     },
@@ -265,17 +237,6 @@ jQuery(function($) {
   const fbPromise = formBuilder.promise
 
   fbPromise.then(function(fb) {
-    const apiBtns = {
-      ...builderActions,
-      ...renderActions,
-      ...demoActions,
-    }
-
-    Object.keys(apiBtns).forEach(function(action) {
-      document.getElementById(action).addEventListener('click', function(e) {
-        apiBtns[action]()
-      })
-    })
 
     document.querySelectorAll('.editForm').forEach(element => element.addEventListener('click', toggleEdit), false)
     const langSelect = document.getElementById('setLanguage')

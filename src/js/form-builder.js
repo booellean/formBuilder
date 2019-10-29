@@ -313,14 +313,14 @@ const FormBuilder = function(opts, element, $) {
   }
 
   const defaultFieldAttrs = type => {
-    const defaultAttrs = ['required', 'label', 'description', 'placeholder', 'className', 'name', 'access', 'value']
+    const defaultAttrs = ['required', 'label', 'description', 'placeholder', 'className', 'name', /**'access',*/ 'value']
     const noValFields = ['header', 'paragraph', 'file', 'autocomplete'].concat(d.optionFields)
 
     const valueField = !noValFields.includes(type)
 
     const typeAttrsMap = {
       autocomplete: defaultAttrs.concat(['options', 'requireValidOption']),
-      button: ['label', 'subtype', 'style', 'className', 'name', 'value', 'access'],
+      button: ['label', 'subtype', 'style', 'className', 'name', 'value'/** , 'access'*/],
       checkbox: [
         'required',
         'label',
@@ -329,16 +329,16 @@ const FormBuilder = function(opts, element, $) {
         'inline',
         'className',
         'name',
-        'access',
+        // 'access',
         'other',
         'options',
       ],
       text: defaultAttrs.concat(['subtype', 'maxlength']),
       date: defaultAttrs,
       file: defaultAttrs.concat(['subtype', 'multiple']),
-      header: ['label', 'subtype', 'className', 'access'],
-      hidden: ['name', 'value', 'access'],
-      paragraph: ['label', 'subtype', 'className', 'access'],
+      header: ['label', 'subtype', 'className'/** , 'access' */],
+      hidden: ['name', 'value'/**, 'access' */],
+      paragraph: ['label', 'subtype', 'className'/**, 'access' */],
       number: defaultAttrs.concat(['min', 'max', 'step']),
       select: defaultAttrs.concat(['multiple', 'options']),
       textarea: defaultAttrs.concat(['subtype', 'maxlength', 'rows']),
@@ -395,37 +395,37 @@ const FormBuilder = function(opts, element, $) {
       name: isHidden => textAttribute('name', values, isHidden),
       value: () => textAttribute('value', values),
       maxlength: () => numberAttribute('maxlength', values),
-      access: () => {
-        const rolesDisplay = values.role ? 'style="display:block"' : ''
-        const availableRoles = [`<div class="available-roles" ${rolesDisplay}>`]
-        for (key in opts.roles) {
-          if (opts.roles.hasOwnProperty(key)) {
-            const roleId = `fld-${data.lastID}-roles-${key}`
-            const cbAttrs = {
-              type: 'checkbox',
-              name: 'roles[]',
-              value: key,
-              id: roleId,
-              className: 'roles-field',
-            }
-            if (roles.includes(key)) {
-              cbAttrs.checked = 'checked'
-            }
+      // access: () => {
+      //   const rolesDisplay = values.role ? 'style="display:block"' : ''
+      //   const availableRoles = [`<div class="available-roles" ${rolesDisplay}>`]
+      //   for (key in opts.roles) {
+      //     if (opts.roles.hasOwnProperty(key)) {
+      //       const roleId = `fld-${data.lastID}-roles-${key}`
+      //       const cbAttrs = {
+      //         type: 'checkbox',
+      //         name: 'roles[]',
+      //         value: key,
+      //         id: roleId,
+      //         className: 'roles-field',
+      //       }
+      //       if (roles.includes(key)) {
+      //         cbAttrs.checked = 'checked'
+      //       }
 
-            availableRoles.push(`<label for="${roleId}">`)
-            availableRoles.push(h.input(cbAttrs).outerHTML)
-            availableRoles.push(` ${opts.roles[key]}</label>`)
-          }
-        }
-        availableRoles.push('</div>')
-        const accessLabels = {
-          first: mi18n.get('roles'),
-          second: mi18n.get('limitRole'),
-          content: availableRoles.join(''),
-        }
+      //       availableRoles.push(`<label for="${roleId}">`)
+      //       availableRoles.push(h.input(cbAttrs).outerHTML)
+      //       availableRoles.push(` ${opts.roles[key]}</label>`)
+      //     }
+      //   }
+      //   availableRoles.push('</div>')
+      //   const accessLabels = {
+      //     first: mi18n.get('roles'),
+      //     second: mi18n.get('limitRole'),
+      //     content: availableRoles.join(''),
+      //   }
 
-        return boolAttribute('access', values, accessLabels)
-      },
+      //   return boolAttribute('access', values, accessLabels)
+      // },
       other: () =>
         boolAttribute('other', values, {
           first: mi18n.get('enableOther'),

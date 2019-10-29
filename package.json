@@ -94,6 +94,7 @@
     "travis-deploy-once": "travis-deploy-once"
   },
   "dependencies": {
+    "froala-editor": "^3.0.6",
     "jquery": ">=3.4.1",
     "jquery-ui-sortable": "*"
   },

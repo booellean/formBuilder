@@ -1,4 +1,4 @@
-import controlTextarea from './textarea'
+import controlTextarea from './textarea';
 
 /**
  * Froala editor element
@@ -54,6 +54,7 @@ export default class controlFroala extends controlTextarea {
    */
   configure() {
     this.js = [
+      // 'froala-editor/js/froala_editor.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/froala_editor.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/colors.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/char_counter.min.js',
@@ -61,10 +62,12 @@ export default class controlFroala extends controlTextarea {
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/font_family.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/fullscreen.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/font_size.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/third_party/font_awesome.min.js',
+      'https://use.fontawesome.com/releases/v5.0.8/js/all.js',
+      // 'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/third_party/font_awesome.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/lists.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/inline_style.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/paragraph_style.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/image.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/image_manager.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/table.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/url.min.js',
@@ -77,12 +80,13 @@ export default class controlFroala extends controlTextarea {
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/file.min.css',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/fullscreen.min.css',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/third_party/font_awesome.min.css',
+      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/image.min.css',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/image_manager.min.css,',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/table.min.css',
       'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/video.min.css'
     ];
-    //TODO: UPDATE Names and Documentation
-    //TODO: Update controls in other files
+    // TODO: UPDATE Names and Documentation
+    // ODO: Update controls in other files
 
     // additional javascript config
     if (this.classConfig.js) {
@@ -102,8 +106,9 @@ export default class controlFroala extends controlTextarea {
   //   // configure the froala editor defaults
     this.editorOptions = {
       height: 200,
-      iconClasses: ['fa-', 'glyphicons-'],
-      colors: ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
+      iconTemplate: 'font_awesome_5',
+      dragInline: false,
+      pluginsEnabled: ['image', 'link', 'draggable'],
       buttons: [
         'bold',
         'italic',
@@ -132,7 +137,6 @@ export default class controlFroala extends controlTextarea {
         'html',
         'save',
         'insertHorizontalRule',
-        'uploadFile',
         'removeFormat',
         'fullscreen'
       ]
@@ -144,7 +148,6 @@ export default class controlFroala extends controlTextarea {
    * @return {Object} DOM Element to be injected into the form.
    */
   build() {
-    console.log(this);
     this.disabled = false;
     const { value = '', ...attrs } = this.config
     this.field = this.markup('textarea', this.parsedHtml(value), attrs)

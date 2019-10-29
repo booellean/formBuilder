@@ -8,9 +8,7 @@ window.fbLoaded = {
   css: [],
 }
 window.fbEditors = {
-  quill: {},
-  tinymce: {},
-  froala: {},
+  froala: {}
 }
 
 /**

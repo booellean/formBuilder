@@ -256,10 +256,12 @@ class FormRender {
     const options = this.options
     const definedFields = options.formData.slice()
 
-    // save tinyMCE editors
+    // save froala editors
     definedFields
-      .filter(fieldData => fieldData.subtype === 'tinymce')
-      .forEach(fieldData => window.tinymce.get(fieldData.name).save())
+      // TODO: Save Froala Data???
+      // .filter(fieldData => fieldData.subtype === 'froala')
+      // .forEach(fieldData => console.log(document.getElementById(fieldData.name)))
+      // .forEach(fieldData => document.getElementById(fieldData.name).save())
 
     this.instanceContainers.forEach((container, index) => {
       const userDataMap = $('select, input, textarea', container)
@@ -292,11 +294,11 @@ class FormRender {
   /** Clear all rendered fields */
   clear() {
     this.instanceContainers.forEach(container => {
-      // clear tinyMCE editors
+      // clear froala editors
       this.options.formData
         .slice()
-        .filter(fieldData => fieldData.subtype === 'tinymce')
-        .forEach(fieldData => window.tinymce.get(fieldData.name).setContent(''))
+        .filter(fieldData => fieldData.subtype === 'froala')
+        .forEach(fieldData => document.getElementById(fieldData.name).innerHTML = '')
 
       container.querySelectorAll('input, select, textarea').forEach(input => {
         if (['checkbox', 'radio'].includes(input.type)) {

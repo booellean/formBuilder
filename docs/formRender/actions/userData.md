@@ -15,7 +15,7 @@ var formRenderInstance = $('#render-container').formRender(formRenderOptions);
 // "[{"type":"text","label":"Full Name","name":"text-1526099104236","subtype":"text","userData":["John Smith"]}]"
 </code></pre>
 
-UserData works for autocomplete, select, checkbox-group, radio-group, text, email, color, tel, number, hidden, date, textarea, textarea-tinymce.
+UserData works for autocomplete, select, checkbox-group, radio-group, text, email, color, tel, number, hidden, date, textarea, textarea-froala.
 
 For fields that have an "other" option, a value that is not in the pre-defined values is assumed to be the "other" value.
 

@@ -199,22 +199,7 @@ export default class Helpers {
           fieldData = Object.assign({}, fieldData, _this.getAttrVals(field))
 
           if (fieldData.subtype) {
-            if (fieldData.subtype === 'quill') {
-              const id = `${fieldData.name}-preview`
-              if (window.fbEditors.quill[id]) {
-                const instance = window.fbEditors.quill[id].instance
-                const data = instance.getContents()
-                fieldData.value = window.JSON.stringify(data.ops)
-                console.log(fieldData.value)
-              }
-            } else if (fieldData.subtype === 'tinymce' && window.tinymce) {
-              const id = `${fieldData.name}-preview`
-              if (window.tinymce.editors[id]) {
-                const editor = window.tinymce.editors[id]
-                fieldData.value = editor.getContent()
-                console.log(fieldData.value)
-              }
-            } else if (fieldData.subtype === 'froala') {
+            if (fieldData.subtype === 'froala') {
               const id = `${fieldData.name}-preview`
               if (window.fbEditors.froala[id]) {
                 // TODO: Not sure if there's a better way to do this. Froala's instances are pretty messed up
