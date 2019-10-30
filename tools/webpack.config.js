@@ -101,6 +101,13 @@ const webpackConfig = {
           },
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
     ],
   },
   plugins: [
@@ -144,7 +151,7 @@ const webpackConfig = {
   devtool,
   resolve: {
     modules: [resolve(__dirname, 'src'), 'node_modules'],
-    extensions: ['.js', '.scss'],
+    extensions: ['.js', '.scss', '.css']
   },
   devServer: {
     inline: true,
