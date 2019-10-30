@@ -313,14 +313,14 @@ const FormBuilder = function(opts, element, $) {
   }
 
   const defaultFieldAttrs = type => {
-    const defaultAttrs = ['required', 'label', 'description', 'placeholder', 'className', 'name', /**'access',*/ 'value']
+    const defaultAttrs = ['required', 'label', 'description', 'placeholder', 'className', 'name','value']
     const noValFields = ['header', 'paragraph', 'file', 'autocomplete'].concat(d.optionFields)
 
     const valueField = !noValFields.includes(type)
 
     const typeAttrsMap = {
       autocomplete: defaultAttrs.concat(['options', 'requireValidOption']),
-      button: ['label', 'subtype', 'style', 'className', 'name', 'value'/** , 'access'*/],
+      button: ['label', 'subtype', 'style', 'className', 'name', 'value'],
       checkbox: [
         'required',
         'label',
@@ -329,16 +329,15 @@ const FormBuilder = function(opts, element, $) {
         'inline',
         'className',
         'name',
-        // 'access',
         'other',
         'options',
       ],
       text: defaultAttrs.concat(['subtype', 'maxlength']),
       date: defaultAttrs,
       file: defaultAttrs.concat(['subtype', 'multiple']),
-      header: ['label', 'subtype', 'className'/** , 'access' */],
-      hidden: ['name', 'value'/**, 'access' */],
-      paragraph: ['label', 'subtype', 'className'/**, 'access' */],
+      header: ['label', 'subtype', 'className'],
+      hidden: ['name', 'value'],
+      paragraph: ['label', 'subtype', 'className'],
       number: defaultAttrs.concat(['min', 'max', 'step']),
       select: defaultAttrs.concat(['multiple', 'options']),
       textarea: defaultAttrs.concat(['subtype', 'maxlength', 'rows']),
