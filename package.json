@@ -91,7 +91,8 @@
     "prestart": "npm run build:vendor",
     "start": "npm run start:devServer",
     "test": "npm run-script build",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "install": "npm run build"
   },
   "dependencies": {
     "froala-editor": "^3.0.6",
