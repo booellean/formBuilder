@@ -59,7 +59,6 @@ export default class controlFroala extends controlTextarea {
   //   // configure the froala editor defaults
     this.editorOptions = {
       height: 300,
-      width: 1000,
       // Note: removing plugins automatically removes buttons. It's nice!
       pluginsEnabled:
       [
