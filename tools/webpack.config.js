@@ -144,10 +144,7 @@ const webpackConfig = {
   devtool,
   resolve: {
     modules: [resolve(__dirname, 'src'), 'node_modules'],
-    extensions: ['.js', '.scss', '.css'],
-    alias: {
-      'froala-editor' : resolve('node_modules/froala-editor/')
-    }
+    extensions: ['.js', '.scss', '.css']
   },
   devServer: {
     inline: true,
