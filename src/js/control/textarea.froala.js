@@ -1,5 +1,59 @@
 import controlTextarea from './textarea';
 
+// import the editor
+import FroalaEditor from 'froala-editor';
+
+// import js plugins
+// import 'froala-editor/js/plugins/align.min.js';
+// import 'froala-editor/js/plugins/char_counter.min.js';
+// import 'froala-editor/js/plugins/code_beautifier.min.js';
+// import 'froala-editor/js/plugins/code_view.min.js';
+// import 'froala-editor/js/plugins/colors.min.js';
+// import 'froala-editor/js/plugins/draggable.min.js';
+// import 'froala-editor/js/plugins/edit_in_popup.min.js';
+// import 'froala-editor/js/plugins/emoticons.min.js';
+// import 'froala-editor/js/plugins/entities.min.js';
+// import 'froala-editor/js/plugins/file.min.js';
+// import 'froala-editor/js/plugins/font_family.min.js';
+// import 'froala-editor/js/plugins/font_size.min.js';
+// import 'froala-editor/js/plugins/forms.min.js';
+// import 'froala-editor/js/plugins/fullscreen.min.js';
+// import 'froala-editor/js/plugins/help.min.js';
+// import 'froala-editor/js/plugins/image.min.js';
+// import 'froala-editor/js/plugins/image_manager.min.js';
+// import 'froala-editor/js/plugins/inline_class.min.js';
+// import 'froala-editor/js/plugins/inline_style.min.js';
+// import 'froala-editor/js/plugins/line_breaker.min.js';
+// import 'froala-editor/js/plugins/line_height.min.js';
+// import 'froala-editor/js/plugins/link.min.js';
+// import 'froala-editor/js/plugins/lists.min.js';
+// import 'froala-editor/js/plugins/paragraph_format.min.js';
+// import 'froala-editor/js/plugins/paragraph_style.min.js';
+// import 'froala-editor/js/plugins/print.min.js';
+// import 'froala-editor/js/plugins/quick_insert.min.js';
+// import 'froala-editor/js/plugins/quote.min.js';
+// import 'froala-editor/js/plugins/save.min.js';
+// import 'froala-editor/js/plugins/special_characters.min.js';
+// import 'froala-editor/js/plugins/save.min.js';
+// import 'froala-editor/js/plugins/table.min.js';
+// import 'froala-editor/js/plugins/url.min.js';
+// import 'froala-editor/js/plugins/video.min.js';
+// import 'froala-editor/js/plugins/word_paste.min.js';
+
+import 'froala-editor/js/plugins.pkgd.min.js';
+import 'froala-editor/js/third_party/embedly.min.js';
+import 'froala-editor/js/third_party/font_awesome.min.js';
+import 'froala-editor/js/third_party/image_tui.min.js';
+import 'froala-editor/js/third_party/spell_checker.min.js';
+
+// import css
+
+// import 'froala-editor/css/froala_editor.css';
+import 'froala-editor/css/froala_editor.pkgd.min.css';
+import 'froala-editor/css/froala_style.min.css';
+import 'froala-editor/css/plugins.pkgd.min.css';
+import 'froala-editor/css/third_party/font_awesome.min.css';
+
 /**
  * Froala editor element
  * See https://www.froala.com/wysiwyg-editor for more info
@@ -53,41 +107,6 @@ export default class controlFroala extends controlTextarea {
    * * Includes all scripts and stylesheets needed for extra Froala button features. Disable as needed
    */
   configure() {
-    this.js = [
-      // 'froala-editor/js/froala_editor.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/froala_editor.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/colors.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/char_counter.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/file.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/font_family.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/fullscreen.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/font_size.min.js',
-      'https://use.fontawesome.com/releases/v5.0.8/js/all.js',
-      // 'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/third_party/font_awesome.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/lists.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/inline_style.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/paragraph_style.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/image.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/image_manager.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/table.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/url.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/js/plugins/video.min.js'
-    ]
-    this.css = [
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/froala_editor.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/colors.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/char_counter.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/file.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/fullscreen.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/third_party/font_awesome.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/image.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/image_manager.min.css,',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/table.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/3.0.6/css/plugins/video.min.css'
-    ];
-    // TODO: UPDATE Names and Documentation
-    // ODO: Update controls in other files
-
     // additional javascript config
     if (this.classConfig.js) {
       let js = this.classConfig.js

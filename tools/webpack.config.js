@@ -101,6 +101,13 @@ const webpackConfig = {
           },
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
     ],
   },
   plugins: [
