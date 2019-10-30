@@ -4,55 +4,20 @@ import controlTextarea from './textarea';
 import FroalaEditor from 'froala-editor';
 
 // import js plugins
-// import 'froala-editor/js/plugins/align.min.js';
-// import 'froala-editor/js/plugins/char_counter.min.js';
-// import 'froala-editor/js/plugins/code_beautifier.min.js';
-// import 'froala-editor/js/plugins/code_view.min.js';
-// import 'froala-editor/js/plugins/colors.min.js';
-// import 'froala-editor/js/plugins/draggable.min.js';
-// import 'froala-editor/js/plugins/edit_in_popup.min.js';
-// import 'froala-editor/js/plugins/emoticons.min.js';
-// import 'froala-editor/js/plugins/entities.min.js';
-// import 'froala-editor/js/plugins/file.min.js';
-// import 'froala-editor/js/plugins/font_family.min.js';
-// import 'froala-editor/js/plugins/font_size.min.js';
-// import 'froala-editor/js/plugins/forms.min.js';
-// import 'froala-editor/js/plugins/fullscreen.min.js';
-// import 'froala-editor/js/plugins/help.min.js';
-// import 'froala-editor/js/plugins/image.min.js';
-// import 'froala-editor/js/plugins/image_manager.min.js';
-// import 'froala-editor/js/plugins/inline_class.min.js';
-// import 'froala-editor/js/plugins/inline_style.min.js';
-// import 'froala-editor/js/plugins/line_breaker.min.js';
-// import 'froala-editor/js/plugins/line_height.min.js';
-// import 'froala-editor/js/plugins/link.min.js';
-// import 'froala-editor/js/plugins/lists.min.js';
-// import 'froala-editor/js/plugins/paragraph_format.min.js';
-// import 'froala-editor/js/plugins/paragraph_style.min.js';
-// import 'froala-editor/js/plugins/print.min.js';
-// import 'froala-editor/js/plugins/quick_insert.min.js';
-// import 'froala-editor/js/plugins/quote.min.js';
-// import 'froala-editor/js/plugins/save.min.js';
-// import 'froala-editor/js/plugins/special_characters.min.js';
-// import 'froala-editor/js/plugins/save.min.js';
-// import 'froala-editor/js/plugins/table.min.js';
-// import 'froala-editor/js/plugins/url.min.js';
-// import 'froala-editor/js/plugins/video.min.js';
-// import 'froala-editor/js/plugins/word_paste.min.js';
-
 import 'froala-editor/js/plugins.pkgd.min.js';
 import 'froala-editor/js/third_party/embedly.min.js';
-import 'froala-editor/js/third_party/font_awesome.min.js';
+// import 'froala-editor/js/third_party/font_awesome.min.js';
 import 'froala-editor/js/third_party/image_tui.min.js';
 import 'froala-editor/js/third_party/spell_checker.min.js';
 
 // import css
-
 // import 'froala-editor/css/froala_editor.css';
 import 'froala-editor/css/froala_editor.pkgd.min.css';
 import 'froala-editor/css/froala_style.min.css';
 import 'froala-editor/css/plugins.pkgd.min.css';
-import 'froala-editor/css/third_party/font_awesome.min.css';
+// import 'froala-editor/css/third_party/font_awesome.min.css';
+
+// TODO: font-awesome doesnt' work.... REALLY broken. Disabled for now
 
 /**
  * Froala editor element
@@ -65,40 +30,6 @@ import 'froala-editor/css/third_party/font_awesome.min.css';
       height: 200,
       colors: ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE']
     }
-
-    Here is a reference of all current buttons
-      buttons: [
-        'bold',
-        'italic',
-        'underline',
-        'strikeThrough',
-        'subscript',
-        'superscript',
-        'fontFamily',
-        'fontSize',
-        'color',
-        'formatBlock',
-        'blockStyle',
-        'inlineStyle',
-        'align',
-        'insertOrderedList',
-        'insertUnorderedList',
-        'outdent',
-        'indent',
-        'selectAll',
-        'createLink',
-        'insertImage',
-        'insertVideo',
-        'table',
-        'undo',
-        'redo',
-        'html',
-        'save',
-        'insertHorizontalRule',
-        'uploadFile',
-        'removeFormat',
-        'fullscreen'
-      ]
  * ```
  */
 export default class controlFroala extends controlTextarea {
@@ -107,6 +38,9 @@ export default class controlFroala extends controlTextarea {
    * * Includes all scripts and stylesheets needed for extra Froala button features. Disable as needed
    */
   configure() {
+
+    // this.css =['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css']
+
     // additional javascript config
     if (this.classConfig.js) {
       let js = this.classConfig.js
@@ -124,41 +58,56 @@ export default class controlFroala extends controlTextarea {
 
   //   // configure the froala editor defaults
     this.editorOptions = {
-      height: 200,
-      iconTemplate: 'font_awesome_5',
-      dragInline: false,
-      pluginsEnabled: ['image', 'link', 'draggable'],
-      buttons: [
-        'bold',
-        'italic',
-        'underline',
-        'strikeThrough',
-        'subscript',
-        'superscript',
-        'fontFamily',
-        'fontSize',
-        'color',
-        'formatBlock',
-        'blockStyle',
-        'inlineStyle',
+      height: 300,
+      width: 1000,
+      // Note: removing plugins automatically removes buttons. It's nice!
+      pluginsEnabled:
+      [
         'align',
-        'insertOrderedList',
-        'insertUnorderedList',
-        'outdent',
-        'indent',
-        'selectAll',
-        'createLink',
-        'insertImage',
-        'insertVideo',
-        'table',
-        'undo',
-        'redo',
-        'html',
+        'charCounter',
+        'codeBeautifier',
+        'codeView',
+        'colors',
+        'draggable',
+        'embedly',
+        'emoticons',
+        'entities',
+        // 'file',
+        'fontAwesome',
+        'fontFamily',
+        // 'fontSize',
+        'fullscreen',
+        'image',
+        'imageTUI',
+        // 'imageManager',
+        'inlineStyle',
+        'inlineClass',
+        'lineBreaker',
+        'lineHeight',
+        'link',
+        'lists',
+        'paragraphFormat',
+        'paragraphStyle',
+        'print',
+        'quickInsert',
+        'quote',
         'save',
-        'insertHorizontalRule',
-        'removeFormat',
-        'fullscreen'
-      ]
+        'table',
+        'url',
+        'video',
+        'wordPaste'
+      ],
+      // dragInline: false,
+      // pluginsEnabled: ['image', 'link', 'draggable'],
+      // TODO: delete upload options or change to true for stretch goal
+      imageUpload: false,
+      videoUpload: false,
+      fileUpload: false
+      // probably will never use this. I like all the features, and disabling plugins works for my purposes
+    //   toolbarButtons:  [
+    //     ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'], 
+    //     ['fontFamily', 'fontSize', 'textColor', 'backgroundColor'], 
+    //     ['inlineClass', 'inlineStyle', 'clearFormatting']]
     }
   }
 
@@ -187,19 +136,19 @@ export default class controlFroala extends controlTextarea {
     classOptions.target = this.field
     
     // initialise the editor
+    // extend options to the editor
     
     window.fbEditors.froala[this.id] = {};
     const editor = window.fbEditors.froala[this.id];
-    editor.instance = new FroalaEditor(`textarea#${this.id}`);
+    editor.instance = FroalaEditor(`textarea#${this.id}`, this.editorOptions);
 
-    // extend options to the editor
-    $.extend(editor.instance.opts, this.editorOptions);
+    // $.extend(editor.instance.opts, this.editorOptions);
 
     // Set userData
     // may be glitchy? This was altered from tinyMCE and froala may not support userData
-    if (this.config.userData) {
-      editor.instance.setContent(this.parsedHtml(this.config.userData[0]))
-    }
+    // if (this.config.userData) {
+    //   editor.instance.setContent(this.parsedHtml(this.config.userData[0]))
+    // }
   }
 }
 
