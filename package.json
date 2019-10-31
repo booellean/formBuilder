@@ -89,7 +89,7 @@
     "semantic-release": "semantic-release",
     "start:devServer": "webpack-dev-server --mode development --open --config tools/webpack.config",
     "prepare": "npm run build",
-    "prestart": "npm run build:vendor",
+    "publish": "npm run build:vendor",
     "start": "npm run start:devServer",
     "test": "npm run-script build",
     "travis-deploy-once": "travis-deploy-once"
